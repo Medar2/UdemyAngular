@@ -6,5 +6,7 @@ export class Persona{
     //     this.nombre = nombre;
     //     this.apellido = apellido;
     // }
+
+    constructor(public nombre: string, public apellido:string){}
 }
 
