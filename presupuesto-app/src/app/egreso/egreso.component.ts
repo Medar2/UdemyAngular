@@ -25,7 +25,7 @@ export class EgresoComponent implements OnInit {
   }
 
   calcularPorcentaje(egreso: Egreso){
-    return egreso.valor / this.ingresoTotal * 100;
+    return egreso.valor / this.ingresoTotal;
   }
 
 
