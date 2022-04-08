@@ -29,4 +29,15 @@ export class DataServices {
                  error => console.log("Error al modificar persona" + error)
          );
     }
+
+    eliminarPersona(index:number){
+        let url: string;
+         url = this.baseUrl.replace('.json', '/' + index + '.json');
+         this.httpClient.delete(url)
+         .subscribe(
+             response => console.log("resultado eliminar persona :" + response),
+                 error => console.log("Error al eliminar persona" + error)
+         );
+    }
+
 }
