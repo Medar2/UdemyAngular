@@ -4,10 +4,13 @@
 <div class="container">
     <div class="row">
         <div class="col-md-3">
-            <a href="#" class="btn btn-primary btn-block" data-toggle="modal" data-target="#modalNuevoCliente">
+            <!-- <a href="#" class="btn btn-primary btn-block" data-toggle="modal" ddata-bs-target="#agregarClienteModal">                
+            </a> -->
+            <button type="button" class="btn btn-primary btn-block" data-bs-toggle="modal" data-bs-target="#agregarClienteModal">
                 <i class="fas fa-plus"></i> Agregar Cliente
-            </a>
+              </button>
         </div>
+        
     </div>
 </div>
 </section>
@@ -65,3 +68,37 @@
         </div>
     </div>
 </section>
+
+<!--Agregar Cliente Modal-->
+<div class="modal fade" id="agregarClienteModal">
+    <div class="modal-dialog modl-lg">
+      <div class="modal-content">
+        <div class="modal-header bg-info text-white">
+          <h5 class="modal-title">Nuevo Cliente</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <form>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="nombre">Nombre</label>
+                    <input type="text" name="nombre" class="form-control"  placeholder="Nombre">                                    
+                </div>
+                <div class="form-group">
+                    <label for="apellido">Apellido</label>
+                    <input type="text" name="apellido" class="form-control"  placeholder="Apellido">                
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" name="email" class="form-control"  placeholder="Email">                
+                </div>
+            </div>
+
+        </form>
+        
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
