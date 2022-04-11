@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { environment } from '../environments/environment';
-import { AngularFireModule } from '@angular/fire';
-import { AngularFirestoreMolule, FirestoreSerringsToken} from '@angular/fire/firestore';
-import { AngularFireAuthModule } from '@angular/fire/auth';
-import { FlashMessagesModule } from 'angular2-flash-messages';
+import { AngularFireModule } from '@angular/fire/compat';
+import { AngularFirestoreModule, Settings} from '@angular/fire/compat/firestore';
+import { AngularFireAuthModule } from '@angular/fire/compat/auth';
+// import { FlashMessagesModule } from 'angular2-flash-messages';
 import { FormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -19,6 +19,7 @@ import { ConfiguracionComponent } from './componentes/configuracion/configuracio
 import { NoEncontradoComponent } from './componentes/no-encontrado/no-encontrado.component';
 import { PiePaginaComponent } from './componentes/pie-pagina/pie-pagina.component';
 import { FlashMessagesService } from 'flash-messages-angular';
+import { ClienteServicio } from './servicios/cliente.service';
 
 @NgModule({
   declarations: [
@@ -36,13 +37,12 @@ import { FlashMessagesService } from 'flash-messages-angular';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    AngularFireModule.initializeApp(environment.firestore, 'control-clientes'),
-    AngularFirestoreMolule,
-    AngularFireAuthModule,
     FormsModule,
-    FlashMessagesService.forRoot()
+    AngularFireModule.initializeApp(environment.firestore, 'control-clientes'),
+    AngularFireAuthModule,
+    AngularFirestoreModule
   ],
-  providers: [],
+  providers: [ClienteServicio],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
