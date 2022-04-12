@@ -71,17 +71,29 @@
 
 <!--Agregar Cliente Modal-->
 <div class="modal fade" id="agregarClienteModal">
-    <div class="modal-dialog modl-lg">
+    <div class="modal-dialog modal-lg">
       <div class="modal-content">
         <div class="modal-header bg-info text-white">
           <h5 class="modal-title">Nuevo Cliente</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
-        <form>
+        <!-- <flash-messages></flash-messages> -->
+        <form #clienteForm="ngForm" (ngSubmit)="agregar(clienteForm)">
             <div class="modal-body">
                 <div class="form-group">
                     <label for="nombre">Nombre</label>
-                    <input type="text" name="nombre" class="form-control"  placeholder="Nombre">                                    
+                    <input type="text" name="nombre" class="form-control"  placeholder="Nombre"
+                    #nombre ="ngModel"
+                    [(ngModel)]="cliente.nombre"
+                    [ngModel]="{'is-invalid':nombre.errors && nombre.touched}"
+                    required
+                    minlength="3">
+                    <div [hidden]="!nombre.errors?.required" class="invalid-feedback">
+                        El nombre es requerido
+                    </div>                
+                    <div [hidden]="!nombre.errors?.minlength" class="invalid-feedback" >
+                        El nombre debe tener al menos 3 caracteres
+                    </div>                
                 </div>
                 <div class="form-group">
                     <label for="apellido">Apellido</label>
@@ -90,6 +102,11 @@
                 <div class="form-group">
                     <label for="email">Email</label>
                     <input type="email" name="email" class="form-control"  placeholder="Email">                
+                </div>
+
+                <div class="form-group">
+                    <label for="apellido">Saldo</label>
+                    <input type="text" name="saldo" class="form-control"  placeholder="Saldo">                
                 </div>
             </div>
 
