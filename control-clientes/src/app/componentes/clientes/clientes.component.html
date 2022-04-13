@@ -77,15 +77,19 @@
           <h5 class="modal-title">Nuevo Cliente</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
-        <!-- <flash-messages></flash-messages> -->
-        <form #clienteForm="ngForm" (ngSubmit)="agregar(clienteForm)">
+        
+      <flash-messages></flash-messages>
+
+        <form  #clienteForm="ngForm" (ngSubmit)="agregar(clienteForm)">
             <div class="modal-body">
                 <div class="form-group">
                     <label for="nombre">Nombre</label>
-                    <input type="text" name="nombre" class="form-control"  placeholder="Nombre"
+                    <input type="text" 
+                    name="nombre" 
+                    class="form-control"  placeholder="Nombre"
                     #nombre ="ngModel"
                     [(ngModel)]="cliente.nombre"
-                    [ngModel]="{'is-invalid':nombre.errors && nombre.touched}"
+                    [ngClass]="{'is-invalid':nombre.errors && nombre.touched}"
                     required
                     minlength="3">
                     <div [hidden]="!nombre.errors?.required" class="invalid-feedback">
@@ -109,13 +113,10 @@
                     <input type="text" name="saldo" class="form-control"  placeholder="Saldo">                
                 </div>
             </div>
-
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-primary">Save changes</button>
+              </div>
         </form>
-        
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Save changes</button>
-        </div>
       </div>
     </div>
   </div>

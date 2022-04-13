@@ -4,7 +4,7 @@ import { environment } from '../environments/environment';
 import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFirestoreModule, Settings} from '@angular/fire/compat/firestore';
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
-// import { FlashMessagesModule } from 'angular2-flash-messages';
+import { FlashMessagesModule } from 'angular2-flash-messages';
 import { FormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -18,7 +18,6 @@ import { RegistroComponent } from './componentes/registro/registro.component';
 import { ConfiguracionComponent } from './componentes/configuracion/configuracion.component';
 import { NoEncontradoComponent } from './componentes/no-encontrado/no-encontrado.component';
 import { PiePaginaComponent } from './componentes/pie-pagina/pie-pagina.component';
-import { FlashMessagesService } from 'flash-messages-angular';
 import { ClienteServicio } from './servicios/cliente.service';
 
 @NgModule({
@@ -40,7 +39,9 @@ import { ClienteServicio } from './servicios/cliente.service';
     FormsModule,
     AngularFireModule.initializeApp(environment.firestore, 'control-clientes'),
     AngularFireAuthModule,
-    AngularFirestoreModule
+    AngularFirestoreModule,
+    FlashMessagesModule.forRoot()
+    
   ],
   providers: [ClienteServicio],
   bootstrap: [AppComponent]
