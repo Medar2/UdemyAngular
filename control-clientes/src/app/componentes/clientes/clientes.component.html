@@ -101,16 +101,51 @@
                 </div>
                 <div class="form-group">
                     <label for="apellido">Apellido</label>
-                    <input type="text" name="apellido" class="form-control"  placeholder="Apellido">                
+                    <input type="text" name="apellido" class="form-control"  placeholder="Apellido"
+                    #apellido ="ngModel"
+                    [(ngModel)]="cliente.apellido"
+                    [ngClass]="{'is-invalid':apellido.errors && apellido.touched}"
+                    required
+                    minlength="3">
+                    <div [hidden]="!apellido.errors?.required" class="invalid-feedback">
+                        El apellido es requerido
+                    </div>                
+                    <div [hidden]="!apellido.errors?.minlength" class="invalid-feedback" >
+                        El apellido debe tener al menos 3 caracteres
+                    </div>                  
                 </div>
                 <div class="form-group">
                     <label for="email">Email</label>
-                    <input type="email" name="email" class="form-control"  placeholder="Email">                
+                    <input type="email" 
+                    name="email" 
+                    class="form-control"  
+                    placeholder="Email"
+                    #email ="ngModel"
+                    [(ngModel)]="cliente.email"
+                    [ngClass]="{'is-invalid':email.errors && email.touched}"
+                    pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"
+                    required>
+                    <div [hidden]="!email.errors?.required" class="invalid-feedback">
+                        El Email es requerido
+                    </div>                
+                    <div [hidden]="!email.errors?.pattern" class="invalid-feedback" >
+                        El Email no es valido
+                    </div>                   
                 </div>
 
                 <div class="form-group">
-                    <label for="apellido">Saldo</label>
-                    <input type="text" name="saldo" class="form-control"  placeholder="Saldo">                
+                    <label for="saldo">Saldo</label>
+                    <input type="number" 
+                    name="saldo" 
+                    class="form-control"  
+                    placeholder="Saldo"
+                    #saldo ="ngModel"
+                    [(ngModel)]="cliente.saldo"
+                    [ngClass]="{'is-invalid':saldo.errors && saldo.touched}"
+                    required>
+                    <div [hidden]="!saldo.errors?.required" class="invalid-feedback">
+                        El Saldo es requerido
+                    </div>                 
                 </div>
             </div>
             <div class="modal-footer">
