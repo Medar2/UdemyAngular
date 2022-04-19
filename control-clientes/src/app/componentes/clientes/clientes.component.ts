@@ -18,8 +18,8 @@ export class ClientesComponent implements OnInit {
     saldo: 0
   };
 
-  @ViewChild("clienteForm")
-  clienteForm!: NgForm;
+  @ViewChild("clienteForm") clienteForm!: NgForm;
+
   @ViewChild("botonCerrar") botonCerrar!: ElementRef
 
 
@@ -62,7 +62,9 @@ export class ClientesComponent implements OnInit {
   }
 
   private cerrarModal() {
-    this.botonCerrar.nativeElement.Click();
+    console.log("entro a cerrarModal");
+    this.botonCerrar.nativeElement.click();
+    console.log("cerrarModal");
 }
 
   hola(){
