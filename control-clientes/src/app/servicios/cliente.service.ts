@@ -30,4 +30,9 @@ export class ClienteServicio {
         );
          return this.clientes;
     }
+
+    agregarCliente(cliente:Clientes){
+        this.clienteColeccion.add(cliente);
+    }
+    
 }

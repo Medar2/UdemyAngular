@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { FlashMessagesService } from 'angular2-flash-messages';
 import { Clientes } from 'src/app/modelo/cliente.model';
@@ -18,8 +18,12 @@ export class ClientesComponent implements OnInit {
     saldo: 0
   };
 
+  @ViewChild("clienteForm")
+  clienteForm!: NgForm;
+  @ViewChild("botonCerrar") botonCerrar!: ElementRef
+
+
   constructor(private clienteServio: ClienteServicio,
-              private clienteServicio: ClienteServicio, 
               private flashMessages: FlashMessagesService) { 
     this.clientes =[];
   }
@@ -51,11 +55,15 @@ export class ClientesComponent implements OnInit {
         cssClass: 'alert-danger', 
         timeout: 4000});
     }else{
-      
-
-     //this.clienteServio.agregarCliente(f.value);
+     this.clienteServio.agregarCliente(f.value);
+     this.clienteForm.resetForm();
+    this.cerrarModal();
     }
   }
+
+  private cerrarModal() {
+    this.botonCerrar.nativeElement.Click();
+}
 
   hola(){
     console.log('hola');
