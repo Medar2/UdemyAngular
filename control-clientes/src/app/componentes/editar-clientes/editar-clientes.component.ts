@@ -27,13 +27,14 @@ export class EditarClientesComponent implements OnInit {
     private route: ActivatedRoute
     ) { 
     this.clientes =[];
+    this.cliente = this.clientes[0];
 }
 
 
   ngOnInit() {
     this.id = this.route.snapshot.params["id"];
     this.clienteServio.getCliente(this.id).subscribe(cliente => {
-      this.cliente = cliente;
+      this.cliente == cliente;
 
 
     });
