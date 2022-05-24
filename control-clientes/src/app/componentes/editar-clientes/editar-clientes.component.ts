@@ -11,7 +11,6 @@ import { ClienteServicio } from 'src/app/servicios/cliente.service';
 })
 export class EditarClientesComponent implements OnInit {
 
-  clientes: Clientes[];
   cliente: Clientes = {
     nombre: '',
     apellido: '',
@@ -25,20 +24,35 @@ export class EditarClientesComponent implements OnInit {
     private flashMessages: FlashMessagesService,
     private router: Router,
     private route: ActivatedRoute
-    ) { 
-    this.clientes =[];
-}
+  ) { }
 
 
   ngOnInit() {
     this.id = this.route.snapshot.params["id"];
     this.clienteServio.getCliente(this.id).subscribe(cliente => {
       this.cliente = cliente;
-
-
     });
 
   }
 
+  guardar({ value, valid }: { value: Clientes, valid: boolean }) {
+    if (!valid) {
+      this.flashMessages.show('Por favor llene el formulario correctamente', {
+        cssClass: 'alert-danger', timeout: 4000
+      });
+    } else {
+      value.id = this.id;
+      this.clienteServio.modificarCliente(value);
+      this.router.navigate(['/']);
+    }
+  }
+
+  eliminar() {
+    if (confirm('¿Está seguro de eliminar este cliente?')) {
+      this.clienteServio.eliminarCliente(this.cliente);
+      this.router.navigate(['/']);
+    }
+  }
 
 }
+ 
