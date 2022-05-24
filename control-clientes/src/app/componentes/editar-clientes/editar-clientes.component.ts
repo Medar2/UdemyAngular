@@ -24,13 +24,26 @@ export class EditarClientesComponent implements OnInit {
     private flashMessages: FlashMessagesService,
     private router: Router,
     private route: ActivatedRoute
+<<<<<<< HEAD
   ) { }
+=======
+    ) { 
+    this.clientes =[];
+    this.cliente = this.clientes[0];
+}
+>>>>>>> 99920c8de7702a69273a57d9aec1abf0306cb3cd
 
 
   ngOnInit() {
     this.id = this.route.snapshot.params["id"];
     this.clienteServio.getCliente(this.id).subscribe(cliente => {
+<<<<<<< HEAD
       this.cliente = cliente;
+=======
+      this.cliente == cliente;
+
+
+>>>>>>> 99920c8de7702a69273a57d9aec1abf0306cb3cd
     });
 
   }
