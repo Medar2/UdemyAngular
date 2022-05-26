@@ -1,13 +1,13 @@
 <nav class="navbar navbar-expand-sm navbar-dark bg-dark p-0">
     <div class="container">
         <a routerLink="/" class="navbar-brand">Control Clientes</a>
-        <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollase">
+        <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
             <span class="navbar-toggler-icon"></span>
         </button>
 
 
-        <div class="collapse navbar-collapse" id="navbarCollase">
-            <ul *ngIf="isLoggedIn" class="navbar-nav">
+        <div class="collapse justify-content-between navbar-collapse" id="navbarCollapse">
+            <ul *ngIf="isLoggedIn" class="navbar-nav mr-auto">
                 <li class="nav-item px-2">
                     <a routerLink="/" class="nav-link">Inicio</a>
                 </li>
@@ -18,7 +18,7 @@
                     <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
                         <i class="fas fa-user"></i> Bienvenido {{loggedInUser}}
                     </a>
-                    <div class="dropdown-manu">
+                    <div class="dropdown-menu">
                         <a routerLink="/configuracion" class="dropdown-item">
                             <i class="fas fa-cog"></i> Configuración
                         </a>
