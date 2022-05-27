@@ -13,17 +13,23 @@
                 </li>
             </ul>
 
+            
             <ul class="navbar-nav ml-auto">
                 <li *ngIf="isLoggedIn" class="nav-item dropdown mr-3">
-                    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
+                    <a href="#" class="nav-link dropdown-toggle" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false" data-toggle="dropdown">
                         <i class="fas fa-user"></i> Bienvenido {{loggedInUser}}
-                    </a>
-                    <div class="dropdown-menu">
-                        <a routerLink="/configuracion" class="dropdown-item">
-                            <i class="fas fa-cog"></i> Configuración
-                        </a>
-                    </div>
+                    </a>                    
+                    <ul class="dropdown-menu"  aria-labelledby="dropdownMenuLink">
+                        <li>
+                            <a routerLink="/configuracion" class="dropdown-item">
+                                <i class="fas fa-cog"></i> Configuración                                                      
+                            </a>
+                        </li>
+                        
+                    </ul>
+                    
                 </li>
+              
                 <li *ngIf="!isLoggedIn && permitirRegistro" class="nav-item">
                     <a  routerLink="/login" class="nav-link" routerLinkActive="router-link-active">
                         <i class="fas fa-user"></i> Login
